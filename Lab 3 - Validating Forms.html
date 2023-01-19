@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class=" hikxvvajj idc0_345" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lab 3 - Validating Forms</title>
+	<script>
+		
+		// Write your JavaScript code here.
+		// Display the error messages wherever you think it makes most sense.
+		document.addEventListener("DOMContentLoaded", () => {
+			document.getElementById("createAccountForm").addEventListener("submit", (event) => {
+				console.log("hi")
+				let email = document.getElementById("email").value
+				let newPassword = document.getElementById("password1").value
+				let confirmPassword = document.getElementById("password2").value
+
+				let errors = ""
+
+				if (!email.includes("@")) {
+					errors += "Invalid Email.\n"
+				}
+				if (!(8 <= newPassword.length)) {
+					errors += "Password needs to be at least 8 characters long.\n"
+				}
+				if (!(newPassword === confirmPassword)) {
+					errors += "Passwords needs to match.\n"
+				}
+				console.log(newPassword.length)
+				if (0 < errors.length) {
+					event.preventDefault()
+					alert(errors)
+				}
+			})
+		})
+
+
+		
+	</script>
+</head>
+<body>
+	
+	<h1>Create account</h1>
+	
+	<form id="createAccountForm" method="POST" data-bitwarden-watching="1">
+		
+		<div>Email: <input type="text" name="email" id="email"></div>
+		
+		<div>Password: <input type="password" name="password1" id="password1"></div>
+		
+		<div>Password (repeat): <input type="password" name="password2" id="password2"></div>
+		
+		<input type="submit" value="Create account">
+		
+	</form>
+	
+
+</body></html>
